@@ -1,27 +1,27 @@
 {% extends './layout.html' %}
 {% block content %}
-<h3 class="m-3">Agregar un nuevo libro</h3>
+<h3 class="m-3">Edita el libro</h3>
 <div class="d-flex bd-highlight mb-3 align-items-center">
     <a class="btn btn-dark m-3" href="{% url 'inicio' %}"><i class="fas fa-arrow-left pr-5"></i>          Regresar al listado</a>
 </div>
 
-<form action="/libro/createLibro" class="p-4" method="POST">{% csrf_token %}
+<form action="/libro/modify/{{libro.id}}" class="p-4" method="POST">{% csrf_token %}
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="floatingInput" name="nombre" placeholder="name@example.com" >
+        <input type="text" class="form-control" id="floatingInput" name="nombre" placeholder="name@example.com" value="{{libro.name}}">
         <label for="floatingInput">Ingresar el titulo</label>
       </div>
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="floatingInput" name="autor" placeholder="name@example.com">
+        <input type="text" class="form-control" id="floatingInput" name="autor" placeholder="name@example.com" value="{{libro.autor}}">
         <label for="floatingInput">Ingresar el autor</label>
       </div>
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="floatingInput" name="anio" placeholder="name@example.com">
+        <input type="text" class="form-control" id="floatingInput" name="anio" placeholder="name@example.com" value="{{libro.anio}}">
         <label for="floatingInput">Ingresar el Año</label>
       </div>
       <div class="form-floating mb-3">
-        <select name="genero" id="floatingInput" placeholder="Seleccina el rol" class="form-select">
+        <select name="genero" id="floatingInput" placeholder="Seleccina el rol" class="form-select" value="{{libro.genero}}">
             {% for i in Genero %}  
-            <option value="{{i.id}}">{{i.nombre}}</option>
+            <option value="{{i.id}}" {% if  i.id  is libro.genero.id %}selected {% endif %}>{{i.nombre}}</option>
             {% endfor %}
           </select>
           <label for="floatingInput">Seleccina el genero</label>

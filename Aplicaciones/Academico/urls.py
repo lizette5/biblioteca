@@ -9,6 +9,9 @@ from . import views
 urlpatterns = [
     path('inicio', views.inicio, name ='inicio'),
     path('libro/registerLibro', views.registerLibro, name ='registerLibro'),
+    path('libro/delete/<id>', views.deleteLibro, name ='deleteLibro'),
     path('libro/createLibro', views.createLibro, name ='createLibro'),
+    path('libro/edit/<id>', views.editLibro, name = "editLibro"),
+    path('libro/modify/<id>', views.modifyLibro, name = "modifyLibro"),
     
 ]
