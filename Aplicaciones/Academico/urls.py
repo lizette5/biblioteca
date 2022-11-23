@@ -7,7 +7,7 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.inicio, name ='inicio'),
+    path('inicio', views.inicio, name ='inicio'),
     path('libro/registerLibro', views.registerLibro, name ='registerLibro'),
     path('libro/createLibro', views.createLibro, name ='createLibro'),
     

@@ -21,5 +21,8 @@ def createLibro(request):
         anio = request.POST.get('anio', False),
         genero= Genero.objects.get(id=request.POST.get('genero')),
     )
-    return render(request, 'librosList.html')
+    return redirect('inicio')
+
+
+
 
