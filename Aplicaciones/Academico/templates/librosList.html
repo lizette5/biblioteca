@@ -1,0 +1,33 @@
+{% extends './layout.html' %}
+{% block content %}
+
+<h3 class="m-3">Libros registrados</h3>
+<div class="d-flex bd-highlight mb-3 align-items-center">
+    <a class="btn btn-dark m-3">Agregar uno nuevo<i class="fas fa-plus-circle"></i></a>
+</div>
+<div class="table-responsive p-4">
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">Autor</th>
+              <th scope="col">Genero</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in Libro %}  
+            <tr>
+              
+              <td>{{i.id}}</td>
+              <td>{{i.nombre}}</td>
+              <td>{{i.autor}}</td>
+              <td>{{i.genero}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+</div>
+
+
+{% endblock %}

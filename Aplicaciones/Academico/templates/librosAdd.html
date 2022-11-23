@@ -1,0 +1,33 @@
+{% extends './layout.html' %}
+{% block content %}
+<h3 class="m-3">Agregar un nuevo libro</h3>
+<div class="d-flex bd-highlight mb-3 align-items-center">
+    <a class="btn btn-dark m-3" href="{% url 'inicio' %}"><i class="fas fa-arrow-left pr-5"></i>          Regresar al listado</a>
+</div>
+
+<form action="/libro/createLibro" class="p-4" method="POST">{% csrf_token %}
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" name="nombre" placeholder="name@example.com">
+        <label for="floatingInput">Ingresar el titulo</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" name="autor" placeholder="name@example.com">
+        <label for="floatingInput">Ingresar el autor</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" name="anio" placeholder="name@example.com">
+        <label for="floatingInput">Ingresar el Año</label>
+      </div>
+      <div class="form-floating mb-3">
+        <select name="genero" id="floatingInput" placeholder="Seleccina el rol" class="form-select">
+            {% for i in Genero %}  
+            <option value="{{i.id}}">{{i.nombre}}</option>
+            {% endfor %}
+          </select>
+          <label for="floatingInput">Seleccina el genero</label>
+    </div>
+      <div class="d-grip gap-2 d-md-flex top-buffer">
+        <button class="btn btn-dark">Guardar</button>
+    </div>
+</form>
+{% endblock %}
