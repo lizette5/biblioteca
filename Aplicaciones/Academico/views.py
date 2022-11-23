@@ -6,8 +6,9 @@ from django.template import RequestContext
 
 # Create your views here.
 def inicio(request):
-	return render(request, 'librosList.html'
-    ,{"Libro": Libro})
+    librosListados = Libro.objects.all()
+    return render(request, "librosList.html", {"Libro" : librosListados})
+	
 
 def registerLibro(request):
     return render(request, 'librosAdd.html', {"Genero":Genero.objects.all})
