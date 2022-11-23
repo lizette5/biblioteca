@@ -15,10 +15,10 @@ class Libro(models.Model):
     autor=models.CharField(max_length=30,blank=True, null=True)
     anio=models.PositiveSmallIntegerField(blank=True, null=True)
     genero=models.ForeignKey(Genero, on_delete=models.CASCADE, blank=True, null=True)
-    estado=models.BooleanField( blank=True, null=True)
+    estado=models.BooleanField( blank=True, null=True, default=True)
 
     def __str__(self) :
-        texto = "{0} {1}"
+        texto = "{0}"
         return texto.format(self.nombre)
 
 class Usuario(models.Model):
@@ -28,8 +28,8 @@ class Usuario(models.Model):
     dni=models.CharField(max_length=70, blank=True, null=True)
 
     def __str__(self) :
-        texto = "{0} {1}"
-        return texto.format(self.nombre,self.apellidos)
+        texto = "{0}"
+        return texto.format(self.nombre)
 
 
 class Prestamo(models.Model):
@@ -39,8 +39,8 @@ class Prestamo(models.Model):
     fecha=models.DateField(blank=True, null=True)
 
     def __str__(self) :
-        texto = "{0} ({1})"
-        return texto.format(self.id_usuario,self.id_libro)
+        texto = "{0} {1}"
+        return texto.format(self.id_usuario.nombre,self.id_libro.nombre)
 
     
     

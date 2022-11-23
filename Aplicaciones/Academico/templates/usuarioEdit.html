@@ -1,0 +1,25 @@
+{% extends './layout.html' %}
+{% block content %}
+<h3 class="m-3">Edita los datos de  la persona</h3>
+<div class="d-flex bd-highlight mb-3 align-items-center">
+    <a class="btn btn-dark m-3" href="{% url 'inicio' %}"><i class="fas fa-arrow-left pr-5"></i>          Regresar al inicio</a>
+</div>
+
+<form action="/persona/modify/{{usuario.id}}" class="p-4" method="POST">{% csrf_token %}
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" name="nombre" placeholder="name@example.com" value="{{usuario.nombre}}">
+        <label for="floatingInput">Ingresar los nombres</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" name="apellidos" placeholder="name@example.com" value="{{usuario.apellidos}}">
+        <label for="floatingInput">Ingresar los apellidos</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" name="dni" placeholder="name@example.com" value="{{usuario.dni}}">
+        <label for="floatingInput">Ingresar el DNI</label>
+      </div>
+      <div class="d-grip gap-2 d-md-flex top-buffer">
+        <button class="btn btn-dark">Guardar</button>
+    </div>
+</form>
+{% endblock %}

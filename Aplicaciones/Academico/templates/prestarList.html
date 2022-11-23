@@ -1,37 +1,37 @@
 {% extends './layout.html' %}
 {% block content %}
-
-<h3 class="m-3">Libros registrados</h3>
+<h3 class="m-3">Libros prestados</h3>
 <div class="d-flex bd-highlight mb-3 align-items-center">
-    <a class="btn btn-dark m-3" href="{% url 'registerLibro' %}">Agregar uno nuevo<i class="fas fa-plus-circle"></i></a>
+    <a class="btn btn-dark m-3" href="{% url 'prestarLibro' %}">Realizar un nuevo prestaom<i class="fas fa-plus-circle"></i></a>
 </div>
+
+
 <div class="table-responsive p-4">
     <table class="table table-dark table-striped">
         <thead>
             <tr>
               <th scope="col">id</th>
               <th scope="col">Titulo</th>
-              <th scope="col">Autor</th>
-              <th scope="col">Genero</th>
+              <th scope="col">Persona</th>
+              <th scope="col">Fecha</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {% for i in Libro %}  
+            {% for i in prestamo %}  
             <tr>
               
               <td>{{i.id}}</td>
-              <td>{{i.nombre}}</td>
-              <td>{{i.autor}}</td>
-              <td>{{i.genero}}</td>
+              <td>{{i.id_libro_id}}</td>
+              <td>{{i.id_usuario_id}}</td>
+              <td>{{i.fecha}}</td>
+
               <td>
-                <a href="libro/edit/{{i.id}}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                
                 <a href="libro/delete/{{i.id}}" class="btn btn-secondary btnEliminacion"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
             {% endfor %}
           </tbody>
       </table>
 </div>
-
-
 {% endblock %}

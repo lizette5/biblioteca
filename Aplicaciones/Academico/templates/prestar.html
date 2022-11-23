@@ -1,0 +1,36 @@
+{% extends './layout.html' %}
+{% block content %}
+
+<h3 class="m-3">Prestar nuevo libro</h3>
+<div class="d-flex bd-highlight mb-3 align-items-center">
+    <a class="btn btn-dark m-3" href="{% url 'inicio' %}"><i class="fas fa-arrow-left pr-5"></i>          Regresar al listado</a>
+</div>
+
+
+<form action="prestarYa" class="p-4" method="POST">{% csrf_token %}
+    <div class="form-floating mb-3">
+        <select name="id_usuario" id="floatingInput" placeholder="Seleccina el rol" class="form-select">
+            {% for i in Persona %}  
+            <option value="{{i.id}}">{{i.nombre}}</option>
+            {% endfor %}
+          </select>
+          <label for="floatingInput">Seleccina la persona a quien prestarás el libro</label>
+    </div>
+    <div class="form-floating mb-3">
+        <select name="id_libro" id="floatingInput" placeholder="Seleccina el rol" class="form-select">
+            {% for i in Libro %}  
+            <option value="{{i.id}}">{{i.nombre}}</option>
+            {% endfor %}
+          </select>
+          <label for="floatingInput">Seleccina el libro a prestar</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="floatingInput" name="fecha" placeholder="name@example.com" value="{{libro.autor}}">
+        <label for="floatingInput">Fecha</label>
+      </div>
+    <div class="d-grip gap-2 d-md-flex top-buffer">
+        <button class="btn btn-dark">Guardar</button>
+    </div>
+</form>
+{% endblock %}
